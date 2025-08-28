@@ -1,0 +1,42 @@
+{
+  "name": "ATAK basic-plugin Development Environment - SDK 5.5.0.5",
+  "image": "mcr.microsoft.com/devcontainers/java:17",
+  "features": {
+    "ghcr.io/devcontainers/features/android-sdk:1": {
+      "version": "30",
+      "ndk_version": "21.4.7075529"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "vscjava.vscode-java-pack",
+        "vscjava.vscode-gradle",
+        "ms-vscode.remote-explorer"
+      ],
+      "settings": {
+        "java.configuration.updateBuildConfiguration": "automatic",
+        "java.gradle.buildServer.enabled": "on",
+        "java.import.gradle.enabled": true,
+        "java.home": "/opt/java/openjdk",
+        "gradle.nestedProjects": true
+      }
+    }
+  },
+  "postCreateCommand": "echo \"🚀 ATAK development environment ready!\"",
+  "forwardPorts": [
+    8080,
+    3000,
+    5037
+  ],
+  "portsAttributes": {
+    "5037": {
+      "label": "ADB Server",
+      "onAutoForward": "silent"
+    },
+    "8080": {
+      "label": "ATAK Plugin Server",
+      "onAutoForward": "notify"
+    }
+  }
+}
